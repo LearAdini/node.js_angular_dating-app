@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="card-body">
+
+    <ng-container *ngIf="messages && messages.length; else noMessages">
+      <ul class="chat" #chat [scrollTop]="chat.scrollHeight">
+        <li *ngFor="let message of messages">
+
+          <span class="chat-img float-right">
+            <img class="rounded-circle" *ngIf="message.senderUsername && member.username == message.recipientUsername" src="{{user.profile_img || './assets/user.jpg'}}">
+             <span *ngIf="message.senderUsername && member.username == message.recipientUsername" style="color:orangered"> {{message.senderUsername}}</span>
+              <img class="rounded-circle" *ngIf="message.recipientUsername && member.username != message.recipientUsername" src="{{member.profile_img || './assets/user.jpg'}}">
+              <span *ngIf="message.recipientUsername && member.username != message.recipientUsername"> <a style="text-decoration: none; color:yellowgreen;" routerLink="/members/{{member.username}}">{{member.username}}</a></span>
+          </span>
+          <div class="chat-body">
+            <p>{{message.content}}</p>
+          </div>
+        </li>
+
+      </ul>
+    </ng-container>
+
+    <ng-template #noMessages>No messages yet...</ng-template>
+  </div>
+  <div class="card-footer">
+    <form #messageForm="ngForm" (ngSubmit)="sendMessage(messageForm)" autocomplete="off">
+      <div class="input-group">
+        <input
+        #typing
+        name="messageContent"
+        required
+        [(ngModel)]="messageContent"
+        type="text"
+        class="form-control input-sm"
+        placeholder="Send a private message">
+        <div class="input-group-append">
+          <button [disabled]="!messageForm.valid" class="btn btn-primary" style="border-radius:0px 5px 5px 0px"type="submit"> Send </button>
+
+        </div>

@@ -1,0 +1,119 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+.form-control {
+  -webkit-appearance: none;
+  margin: 0;
+}
+mat-select-country{
+  background-color: #1c1e1f;
+}
+.container{
+  background-color: rgba(50, 50, 50, 0.747);
+  border-radius: 10px;
+  margin-top:5px;
+}
+.row{
+  justify-content: center;
+  padding-top: 10px;
+}
+
+input[type=number] {-moz-appearance: textfield;}
+
+h2{
+  font-size:110px !important;
+  text-shadow: 3px 3px  rgba(0, 0, 0, 0.267);
+  color:crimson !important;
+}
+
+input[type=text],input[type=password],input[type=email],.form-control{
+  box-shadow: 0px 3px  rgba(0, 0, 0, 0.267);
+  width:250px;
+  margin-left:44%;
+}
+
+.btn-success {
+  margin-top:35px;
+  margin-left:1%;
+  width:190px;
+  transition:transform 0.3s;
+  background-color:rgb(43, 251, 113);
+  color:black;
+  border:solid 1px black;
+  text-shadow: 1px 1px  rgba(0, 0, 0, 0.267);
+  animation-duration: 1s;
+}
+
+.btn-success:hover {transform: scale(1.05);}
+
+.form-group{margin-top:5px;}
+
+.invalid-feedback{text-align: center;}
+
+.text-danger{text-align: center;}
+
+
+
+/* add section */
+
+
+.my-drop-zone {
+  border: solid 1px rgb(0, 41, 58);
+
+border-radius: 5px;
+}
+
+.my-drop-zone > i {
+  margin-top: 40px;
+
+color:white;
+}
+.nv-file-over {
+  border: solid 3px red;
+}
+.another-file-over-class {
+  border: solid 3px green;
+}
+
+#que{
+  margin-top: 25px;
+  color:white;
+  margin-left:25px;
+}
+
+.btn-danger {
+  width: 55%;
+
+  color:white;
+  border-radius: 0px 3px 3px 0px;
+
+}
+
+.img-thumbnail,.btn-danger,.my-drop-zone,input[type='file'] {
+  box-shadow: 0px 3px  rgba(0, 0, 0, 0.267);
+}
+
+input[type='file'] {
+
+  width:max-width;
+  border-radius: 5px;
+  cursor: pointer;
+  border:1px solid rgb(0, 41, 58);
+background: faded;
+background-color: rgb(255, 255, 255);
+color:black;
+margin-bottom: 10px;
+}
+
+.text-center{
+  color:white;
+}
+
+#btn-isMain{
+  width: 3rem;
+  display:inline;
+  border-radius: 3px 0px 0px 3px;
+}
+
+
+
+

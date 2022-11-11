@@ -1,0 +1,103 @@
+<div class="row mt-2 p-4" *ngIf="user">
+  <div class="col-4">
+    <h3>{{user.username}}'s Profile</h3>
+  </div>
+  <div class="col-8">
+    <div class="alert alert-info" *ngIf="editForm.dirty">
+      <strong>Information</strong>
+      You have made changes. any unsaved changes will be lost
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <img class="card-img-top img-thumbnail" src="{{user.profile_img || './assets/user.jpg'}}"
+        alt="{{user.firstName}}">
+      <br>
+      <div class="card-body">
+        <div>
+          <h6>Location:</h6>
+          <p>{{user.city}}, {{user.country}}</p>
+        </div>
+        <div>
+          <h6>Date Of Birth:</h6>
+          <p>{{user.dateOfBirth | date}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-8">
+    <tabset class="member-tabset">
+      <tab heading="About {{user.firstName}}">
+        <form #editForm="ngForm" (ngSubmit)="updateMember()" id="editForm" enctype="multipart/form-data">
+          <br>
+          <h4>Description:</h4>
+          <textarea [(ngModel)]="user.intro" name="intro" class="form-control" rows="6"></textarea>
+          <h4 class="mt-2">Interests:</h4>
+          <textarea [(ngModel)]="user.interests" name="interests" class="form-control" rows="6"></textarea>
+          <h4 class="mt-2">Location Details:</h4>
+          <div class="form-inline">
+            <h6 for="City">City:</h6>
+            <textarea type="text" [(ngModel)]="user.city" name="city" class="form-control"></textarea>
+            <h6 for="Country">Country:</h6>
+            <textarea type="text" [(ngModel)]="user.country" name="country" class="form-control"></textarea>
+          </div>
+        </form>
+
+        <br>
+        <h4 class="mb-1">Upload Profile Picture</h4>
+        <input type="file" name="image" class="file-input" [accept]="requiredFileType" (change)="onFileSelected($event)"
+          #fileUpload>
+        <br>
+
+        <br>
+        <div class="progress">
+          <mat-progress-bar class="progress-bar" mode="determinate" [value]="uploadProgress" *ngIf="uploadProgress">
+          </mat-progress-bar>
+        </div>
+
+        <br>
+        <button [disabled]="editForm.pristine" form="editForm" type="submit" class="btn btn-success btn-block">
+          Save Changes </button>
+      </tab>
+
+      <tab heading="Change Password" (ngSubmit)="editPassword()">
+        <br>
+        <br>
+        <div class="edit-password pb-3">
+          <h6>Type your email:</h6>
+          <input type="email" placeholder="{{user.email}}" name="emailEdit" #emailEdit class="form-control"
+            autocomplete="off">
+          <br>
+          <button class="btn btn-primary" id="send-email" (click)="sendEmail()">Send Code &nbsp;<i
+              class="fa fa-paper-plane"></i></button>
+        </div>
+
+        <div *ngIf="inputCode" class="edit-password mb-1">
+          <h6>Enter Code:</h6>
+          <input type="text" autocomplete="off" name="codeEdit" #codeEdit class="form-control" placeholder="Code">
+          <br>
+          <div class="qr">
+            <qrcode *ngIf="inputCode" [qrdata]="'Your code is: '+ code" [width]="256" [errorCorrectionLevel]="'M'">
+            </qrcode>
+          </div><br>
+          <button class="btn btn-primary" id="send-email" (click)="codeCheck()">Submit Code &nbsp;<i
+              class="fa fa-paper-plane"></i></button>
+          <br>
+        </div>
+
+        <form #resetForm="ngForm" (ngSubmit)="updatePassword()" *ngIf="completeReset" id="resetForm"
+          class="form-inline">
+          <div class="reset-password">
+            <input type="password" [(ngModel)]="user.password" #pass placeholder="Password" name="password"
+              class="form-control mb-2" autocomplete="off">
+            <input type="password" class="form-control" #checkPass placeholder="Confirm Password"
+              name="confirmPassword">
+            <br>
+            <button [disabled]="resetForm.pristine" form="resetForm" class="btn btn-success" type="submit"
+              class="btn btn-success btn-block">Update Password</button>
+          </div>
+        </form>
+      </tab>
+    </tabset>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+/* body{
+  background: linear-gradient(90deg, rgb(13, 21, 20) 0%, rgb(12, 21, 19) 50%, rgb(13, 21, 20) 100%);
+} */
+
+body,html{
+  background-color:#1c1e1f !important;
+  max-height: 100% !important;
+  max-width: 99% !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  /* max-width: max-content; */
+  /* display:block; */
+}
+.form-control{
+  box-shadow: none !important;
+}
+.btn{
+	box-shadow: none !important;
+}
+
+input{
+  background-color:#1c1e1f !important;
+  color:white !important;
+}
+
+
+/* ngx-tabset[tabTitle]{
+  color: red !important;
+  display:block;
+  background-color: aqua !important;
+} */
+
+
+/* html, body { max-height: 100%; } */
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */

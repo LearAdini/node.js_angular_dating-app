@@ -1,0 +1,40 @@
+  label{ color:white;}
+
+  .form-select{
+    width:130px;
+    color:white;
+    display:inline-block;
+    background-color: #181a1b;
+  }
+
+  option{
+    color:white;
+    display:inline-block;
+    background-color: #181a1b;
+  }
+  .form-group{
+    color:white;
+    margin-top:15px;
+    margin-left:25px;
+  }
+
+  #pagination{
+  border-radius: 5px 5px 0px 0px;
+  padding-top:-15px;
+  width:max-content;
+  }
+
+  .pag /deep/ .ngx-pagination .current {
+    background: transparent;
+    color:red;
+  }
+
+  .pag /deep/ .ngx-pagination :hover {
+    background: transparent;
+    color:cadetblue;
+  }
+  .pag /deep/ {
+    background-color: rgba(70, 70, 70, 0.671);
+    border-radius: 3px;
+    height:26px;
+  }

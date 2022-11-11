@@ -1,0 +1,29 @@
+<br>
+<div class="card mb-2">
+    <div class="card-img-wrapper">
+      <img class="card-img-top" src="{{user.profile_img || './assets/user.jpg'}}" alt="{{user.username}}">
+    </div>
+    <div class="card-body p-1">
+        <ul class="list-inline user-icons animate text-center">
+            <li class="list-inline-item">
+              <button routerLink="/members/{{user.username}}" class="btn btn-primary">
+                <i class="fa fa-user"></i>
+              </button>
+            </li>
+            <li class="list-inline-item"><button class="btn btn-primary" (click)="addLike(user)"><i class="fa fa-heart"></i></button></li>
+            <li class="list-inline-item">
+              <button class="btn btn-primary" routerLink="/members/{{user.username}}" [queryParams]="{ tab: 'messages'}">
+                <i class="fa fa-envelope">
+                </i>
+              </button>
+            </li>
+          </ul>
+      <h6 class="card-title text-center mb-1">
+        <i class="fa fa-user m-1" [class.is-online]=""></i>{{user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)}} {{user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1)}}
+      </h6>
+      <p class="card-text text-muted text-center">
+        Date Of Birth: {{user.dateOfBirth | date}}
+      </p>
+    </div>
+  </div>
+

@@ -1,0 +1,90 @@
+<h2 class="text-center text-primary mt-5">Register</h2>
+<br>
+
+
+<form class="mt-5" [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
+
+  <div class="text-center">I am a:</div>
+  <div class="form-group text-center">
+    <input type="radio" value="male" formControlName="gender"/>
+    <label style="text-align: center;" class="radio-label"> Male &nbsp;</label>
+    <input type="radio" value="female" formControlName="gender"/>
+    <label style="text-align: center;" class="radio-label">Female</label>
+  </div>
+
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="username" placeholder="UserName"
+      [class.is-invalid]="registerForm.get('username')?.errors && registerForm.get('username')?.touched">
+    <div class="invalid-feedback" style="font-size:15px;">Please enter a username</div>
+  </div>
+
+  <div class="form-group">
+    <input type="password" class="form-control" formControlName="password" placeholder="Password"
+      [class.is-invalid]="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+    <div class="invalid-feedback" style="font-size:15px;">Please enter a password</div>
+    <div *ngIf="registerForm.get('password')?.hasError('minLength')" class="invalid-feedback" style="font-size:15px;">
+      Please enter atleast 8 charchters</div>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password"
+      [class.is-invalid]="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched">
+    <div class="invalid-feedback" style="font-size:15px;">Please confirm your password</div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="firstName" placeholder="First Name" autocomplete="off"
+      [class.is-invalid]="registerForm.get('firstName')?.errors && registerForm.get('firstName')?.touched">
+    <div class="invalid-feedback" style="font-size:15px;">Please enter your first name</div>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name" autocomplete="off"
+      [class.is-invalid]="registerForm.get('lastName')?.errors && registerForm.get('lastName')?.touched">
+    <div class="invalid-feedback" style="font-size:15px;">Please enter your last name</div>
+  </div>
+
+  <div class="form-group">
+    <input
+    style="cursor: pointer;"
+    [class.is-invalid]="registerForm.get('dateOfBirth')?.errors && registerForm.get('dateOfBirth')?.touched"
+    type="text"
+    class="form-control"
+    formControlName="dateOfBirth"
+    placeholder="Date Of Birth"
+    [bsConfig]="bsConfig"
+    bsDatepicker
+    [maxDate]="maxDate"
+    >
+    <div class="invalid-feedback" style="font-size:15px;">Please enter a date of birth</div>
+    </div>
+
+    <div class="form-group">
+      <input type="email" class="form-control" formControlName="email" placeholder="Email" autocomplete="off"
+        [class.is-invalid]="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+      <div class="invalid-feedback" style="font-size:15px;">Please enter a valid email</div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" class="form-control" formControlName="city" placeholder="City" autocomplete="off"
+        [class.is-invalid]="registerForm.get('city')?.errors && registerForm.get('city')?.touched">
+      <div class="invalid-feedback" style="font-size:15px;">Please enter your city</div>
+    </div>
+
+    <div class="form-group">
+      <mat-select-country class="form-control" formControlName="country" placeholder="Country"
+       [class.is-invalid]="registerForm.get('country')?.errors && registerForm.get('country')?.touched"
+       appearance="standard" (onCountrySelected)="onCountrySelected($event)">
+      </mat-select-country>
+      <div class="invalid-feedback" style="font-size:15px;">Please enter your country</div>
+    </div>
+
+
+  <div class="row mt-2" *ngIf="validationErrors.length">
+    <ul class="text-danger">
+      <li *ngFor="let error of validationErrors">{{error}}</li>
+    </ul>
+  </div>
+
+
+  <div class="form-group text-center">
+    <button [disabled]="registerForm.invalid" class="btn btn-success mt-3" type="submit">Register</button>
+  </div>
+</form>

@@ -1,0 +1,49 @@
+  .row{ margin-left: 1.5%; }
+
+  a{ color:white; }
+
+  .btn-primary{
+    border-radius:0px 0px 5px 5px;
+    border-right:solid 1px rgba(8, 8, 8, 0.514);
+    border-left:solid 1px rgba(8, 8, 8, 0.514);
+  }
+
+  thead {
+    border:none;
+    background-color: orange;
+    color:black;
+    border-radius: 5px;
+
+  }
+
+  table{
+  width:90%;
+  margin-left:150px;
+  margin-top:25px;
+  }
+
+  td{
+    color:white !important;
+    border:solid 1px white;
+    border-left:none;
+    border-right:none;
+  }
+
+  .btn-danger{
+    width:150px;
+    height:80px;
+    border-radius:5px;
+    color:gray;
+  }
+
+  .btn-danger:hover{ color:white; }
+
+
+  /* @keyframes scroll-top-to-bottom {
+    0% {
+      margin-top:-150px;
+    }
+    100% {
+      margin-top:-8px;
+    }
+  } */

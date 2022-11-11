@@ -1,0 +1,50 @@
+<div class="row mb-4">
+  <div class="btn-group" name="container">
+    <button class="btn btn-primary" btnRadio="Messages" (click)="loadMessages()">
+      <i class="fa fa-envelope"></i> All Messages
+    </button>
+  </div>
+</div>
+
+<div class="row" [ngSwitch]="messages.length">
+  <h3 *ngSwitchCase="0">No messages</h3>
+  <table *ngSwitchDefault class="table table-hover">
+    <thead>
+      <tr>
+        <th style="width: 40%;">Message</th>
+        <th style="width: 20%;">From / To</th>
+        <th style="width: 20%;">Sent On Date</th>
+        <th style="width: 10%;">Delete Message</th>
+      </tr>
+    </thead><br>
+    <tbody>
+      <tr [hidden]="loading" *ngFor="let message of messages.reverse()">
+        <ng-container *ngIf="user.username == message.senderUsername || user.username == message.recipientUsername">
+          <td>
+            <h6>{{message.content}}</h6>
+          </td>
+          <td>
+            <ng-container [ngSwitch]="container">
+              <div>
+                From <a>{{message.senderUsername | titlecase}}</a>
+                To <a [routerLink]="'/members/' +  message.recipientUsername">{{message.recipientUsername | titlecase}}
+                </a>
+              </div>
+              <div></div>
+            </ng-container>
+          </td>
+          <td>{{message.createdAt | date}}</td>
+          <td><button (click)="$event.stopPropagation()" (click)="deleteMessage(message._id)"
+              *ngIf="user.username == message.senderUsername" class="btn btn-danger"><i
+                class="fa fa-trash"></i></button></td>
+        </ng-container>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="pagination && !loading">
+  <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+    [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;" nextText="&rsaquo;"
+    firstText="&laquo;" lastText="&raquo;">
+  </pagination>

@@ -1,0 +1,55 @@
+
+ #send-message{
+  border-radius: 0px 5px 5px 0px;
+  height:36px;
+  margin-top:1px;
+  padding-top:1px;
+}
+
+input{box-shadow: none !important}
+
+ .card {
+  border: none;
+  background-color: rgb(26, 26, 26);
+  border-radius: 0px 0px 5px 5px;
+  color:white;
+}
+
+.chat {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+ overflow-y:scroll;
+ flex-direction: column-reverse;
+ /* overflow:hidden; */
+ height:700px;
+}
+
+.chat li {
+ margin-bottom: 10px;
+ padding-bottom: 10px;
+ border-bottom: 1px dotted #B3A9A9;
+}
+
+.rounded-circle {
+    height: 50px;
+    width:50px;
+     border:2px solid rgb(0, 53, 70);
+     display:inline;
+     border-radius: 50px !important;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1 !important;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888 !important;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555 !important;
+}

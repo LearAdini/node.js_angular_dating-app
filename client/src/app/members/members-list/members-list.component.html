@@ -1,0 +1,23 @@
+
+
+
+<div class="form-group">
+ <span> Sort By Gender: </span><select class="form-select" [(ngModel)]="gender" name="gender">
+    <option value="" selected>All</option>
+    <option value="female">Female</option>
+    <option value="male">Male</option>
+  </select>
+</div>
+
+
+<div class="row">
+    <div class="col-2" *ngFor="let user of users | paginate: {itemsPerPage:12, currentPage:p} | genderFilter:gender">
+      <app-member-card [user]="user"></app-member-card>
+    </div>
+  </div>
+<br>
+
+
+  <div class="d-flex justify-content-center">
+    <pagination-controls class="pag" (pageChange)="p = $event"></pagination-controls>
+    </div>

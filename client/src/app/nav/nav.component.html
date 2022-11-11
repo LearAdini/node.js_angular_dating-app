@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand sticky-top navbar-dark bg-dark" aria-label="Second navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home">Dating App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02"
+      aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="(currentUser$ | async)" routerLink="members">Find Members</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="(currentUser$ | async)" routerLink="messages">Mail</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="(currentUser$ | async)" routerLink="member/connections">My Connections</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="dropdown show" *ngIf="currentUser$ | async as user" >
+      <img class="img" src="{{user.profile_img || './assets/user.jpg'}}">
+      <a class="btn btn-secondary-outline dropdown-toggle text-light"  data-toggle="dropdown">{{user.username}}</a>
+      <div class="dropdown-menu mt-2" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" routerLink="/member/edit">Edit Profile</a>
+      <span></span>
+      <a class="dropdown-item" id="dropdown-item-logout" (click)="logout()">Logout</a>
+      </div>
+    </div>
+
+    <form *ngIf="!(currentUser$ | async)" #loginForm="ngForm" id="form" (ngSubmit)="login()" class="form-inline mt-2 mt-md-0"
+      autocomplete="off">
+      <div class="user-input">
+
+        <input name="username" required [(ngModel)]="model.username" class="form-control p-2" id="username" type="text"
+          placeholder="Username">
+
+        <input name="password" required [(ngModel)]="model.password" class="form-control p-2" id="password" type="password"
+         placeholder="Password">
+
+        <div class="user-login">
+          <button [disabled]="!loginForm.valid" class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+          <button type="button" routerLink="/register" id="register"
+            class="btn btn-warning my-2 my-sm-0 m-2">Register</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
+
