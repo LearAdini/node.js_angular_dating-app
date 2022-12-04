@@ -4,7 +4,7 @@
 <tbody>
    <tr>
 		<td>Link</td>
-		<td>https://angular-datingapp.herokuapp.com</td>
+		<td>https://angular-datingapp.onrender.com</td>
 	</tr>
 	<tr>
 		<td>Frontend</td>
