@@ -2,10 +2,6 @@
 
 <table>
 <tbody>
-   <tr>
-		<td>Link</td>
-		<td>https://angular-datingapp.onrender.com</td>
-	</tr>
 	<tr>
 		<td>Frontend</td>
 		<td>Angular, HTML, CSS</td>
